@@ -1,11 +1,21 @@
 <!DOCTYPE html>
-<html lang="ja">
+<html lang="{{ .Site.Language.Lang }}">
 <head>
-  <meta charset="UTF-8" />
-  <title>{{ .Title }}</title>
-  <link rel="stylesheet" href="/style.css">
+    {{ partial "head.html" . }}
+    <title>{{ if .IsHome }}{{ .Site.Title }}{{ else }}{{ .Title }} | {{ .Site.Title }}{{ end }}</title>
 </head>
 <body>
-  {{ block "main" . }}{{ end }}
+    <div class="container">
+        <div class="sidebar">
+            {{ partial "sidebar.html" . }}
+        </div>
+        <div class="content-wrapper">
+            <main class="content">
+                {{ block "main" . }}{{ end }}
+            </main>
+            {{ partial "footer.html" . }}
+        </div>
+    </div>
+    <script src="{{ "js/main.js" | relURL }}"></script>
 </body>
 </html>

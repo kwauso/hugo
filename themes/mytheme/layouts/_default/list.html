@@ -1,8 +1,29 @@
 {{ define "main" }}
-<h1>{{ .Title }}</h1>
-<ul>
-  {{ range .Pages }}
-    <li><a href="{{ .RelPermalink }}">{{ .Title }}</a></li>
-  {{ end }}
-</ul>
+<div class="section-list">
+    <header class="section-header">
+        <h1 class="section-title">{{ .Title }}</h1>
+        {{ if .Description }}
+        <div class="section-description">{{ .Description }}</div>
+        {{ end }}
+    </header>
+
+    <div class="section-content">
+        {{ .Content }}
+    </div>
+
+    {{ if .Pages }}
+    <div class="pages-list">
+        {{ range .Pages.ByWeight }}
+        <div class="page-item">
+            <h2 class="page-item-title">
+                <a href="{{ .Permalink }}">{{ .Title }}</a>
+            </h2>
+            {{ if .Description }}
+            <div class="page-item-description">{{ .Description }}</div>
+            {{ end }}
+        </div>
+        {{ end }}
+    </div>
+    {{ end }}
+</div>
 {{ end }}

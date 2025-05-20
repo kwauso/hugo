@@ -1,7 +1,29 @@
 {{ define "main" }}
-<h1>{{ .Title }}</h1>
-<p>{{ .Date.Format "2006-01-02" }}</p>
-<div>
-  {{ .Content }}
-</div>
+<article class="page-content">
+    <header class="page-header">
+        <h1 class="page-title">{{ .Title }}</h1>
+    </header>
+
+    <div class="page-meta">
+        {{ if .Params.author }}
+        <span class="author">by {{ .Params.author }}</span>
+        {{ end }}
+    </div>
+
+    <div class="page-toc">
+        <h2>ON THIS PAGE</h2>
+        {{ .TableOfContents }}
+    </div>
+
+    <div class="page-content-inner">
+        {{ .Content }}
+    </div>
+
+    {{ if .Params.info }}
+    <div class="info-box">
+        <span class="info-icon">ℹ️</span>
+        <div class="info-content">{{ .Params.info }}</div>
+    </div>
+    {{ end }}
+</article>
 {{ end }}

@@ -1,0 +1,12 @@
+<footer class="site-footer">
+    <div class="footer-content">
+        {{ if .Site.Params.footerText }}
+        <p>{{ .Site.Params.footerText | safeHTML }}</p>
+        {{ else }}
+        <p>© {{ now.Format "2006" }} {{ .Site.Title }}</p>
+        {{ end }}
+        {{ if .Site.Params.showCreatedWith }}
+        <p>Created with <a href="https://gohugo.io/" target="_blank">Hugo</a> and the Knowledge Base theme</p>
+        {{ end }}
+    </div>
+</footer>

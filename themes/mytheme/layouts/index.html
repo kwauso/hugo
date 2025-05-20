@@ -1,4 +1,46 @@
 {{ define "main" }}
-<h1>ようこそ</h1>
-<p>これは自作テーマのトップページです。</p>
+<div class="home-content">
+    <header class="home-header">
+        <h1 class="home-title">{{ .Title }}</h1>
+        {{ if .Description }}
+        <div class="home-description">{{ .Description }}</div>
+        {{ end }}
+    </header>
+
+    <div class="home-content-inner">
+        {{ .Content }}
+    </div>
+
+    {{ if .Site.Params.showFeaturedSections }}
+    <div class="featured-sections">
+        <h2>主要セクション</h2>
+        <div class="sections-grid">
+            {{ range .Site.Menus.main }}
+            <div class="section-card">
+                <h3 class="section-card-title">
+                    <a href="{{ .URL }}">{{ .Name }}</a>
+                </h3>
+                {{ if .Post }}
+                <div class="section-card-description">{{ .Post }}</div>
+                {{ end }}
+            </div>
+            {{ end }}
+        </div>
+    </div>
+    {{ end }}
+
+    {{ if .Site.Params.showRecentPages }}
+    <div class="recent-pages">
+        <h2>最近の更新</h2>
+        <ul class="recent-pages-list">
+            {{ range first 5 (where .Site.RegularPages "Section" "!=" "") }}
+            <li class="recent-page-item">
+                <a href="{{ .Permalink }}">{{ .Title }}</a>
+                <span class="recent-page-date">{{ .Date.Format "2006-01-02" }}</span>
+            </li>
+            {{ end }}
+        </ul>
+    </div>
+    {{ end }}
+</div>
 {{ end }}

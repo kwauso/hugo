@@ -2,3 +2,117 @@ baseURL = '/'
 languageCode = 'en-us'
 title = 'My New Hugo Site'
 theme = "mytheme"
+
+# Enable syntax highlighting
+pygmentsCodeFences = true
+pygmentsUseClasses = true
+
+[params]
+  description = "ナレッジベースとドキュメンテーション"
+  username = "username"
+  # logo = "images/logo.svg" # Uncomment to use a logo image
+  footerText = "© 2023 ナレッジベース"
+  showCreatedWith = true
+  showFeaturedSections = true
+  showRecentPages = true
+
+[menu]
+  [[menu.main]]
+    name = "Welcome"
+    url = "/"
+    weight = 1
+  
+  [[menu.main]]
+    name = "Garden"
+    url = "/garden/"
+    weight = 2
+  
+  [[menu.main]]
+    name = "3Dictionary"
+    url = "/dictionary/"
+    weight = 3
+  
+  [[menu.main]]
+    name = "Anatomy for Artists"
+    url = "/anatomy/"
+    weight = 4
+    
+    [[menu.main.children]]
+      name = "Anatomy for Artists Overview"
+      url = "/anatomy/overview/"
+      weight = 1
+    
+    [[menu.main.children]]
+      name = "The Human Skeleton"
+      url = "/anatomy/skeleton/"
+      weight = 2
+    
+    [[menu.main.children]]
+      name = "Muscles (General)"
+      url = "/anatomy/muscles/"
+      weight = 3
+    
+    [[menu.main.children]]
+      name = "Head & Neck"
+      url = "/anatomy/head-neck/"
+      weight = 4
+  
+  [[menu.main]]
+    name = "Art History & Theory"
+    url = "/art-history/"
+    weight = 5
+    
+    [[menu.main.children]]
+      name = "History"
+      url = "/art-history/history/"
+      weight = 1
+    
+    [[menu.main.children]]
+      name = "Theory"
+      url = "/art-history/theory/"
+      weight = 2
+    
+    [[menu.main.children]]
+      name = "Art History & Theory Overview"
+      url = "/art-history/overview/"
+      weight = 3
+  
+  [[menu.main]]
+    name = "Books"
+    url = "/books/"
+    weight = 6
+  
+  [[menu.main]]
+    name = "Publications"
+    url = "/publications/"
+    weight = 7
+  
+  [[menu.main]]
+    name = "Documentations"
+    url = "/docs/"
+    weight = 8
+  
+  [[menu.main]]
+    name = "Obsidian Publish"
+    url = "/obsidian/"
+    weight = 9
+  
+  [[menu.main]]
+    name = "Websites"
+    url = "/websites/"
+    weight = 10
+
+  [[menu.header]]
+    name = "Home"
+    url = "/"
+    weight = 1
+  
+  [[menu.header]]
+    name = "About"
+    url = "/about/"
+    weight = 2
+  
+  [[menu.header]]
+    name = "Contact"
+    url = "/contact/"
+    weight = 3

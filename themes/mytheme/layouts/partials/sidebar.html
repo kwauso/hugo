@@ -1,0 +1,46 @@
+<div class="sidebar-header">
+    <a href="{{ .Site.BaseURL }}" class="logo">
+        {{ if .Site.Params.logo }}
+        <img src="{{ .Site.Params.logo | relURL }}" alt="{{ .Site.Title }}">
+        {{ else }}
+        <div class="site-title">{{ .Site.Title }}</div>
+        {{ end }}
+    </a>
+    {{ if .Site.Params.username }}
+    <div class="username">@{{ .Site.Params.username }}</div>
+    {{ end }}
+</div>
+
+<div class="theme-toggle">
+    <span class="dark-mode-toggle">🌙</span>
+    <span class="light-mode-toggle">☀️</span>
+</div>
+
+<div class="search-box">
+    <input type="text" id="search-input" placeholder="Search page or heading...">
+</div>
+
+<nav class="sidebar-nav">
+    <ul class="menu">
+        {{ $currentPage := . }}
+        {{ range .Site.Menus.main }}
+            {{ if .HasChildren }}
+                <li class="menu-item-has-children{{ if $currentPage.HasMenuCurrent "main" . }} active{{ end }}">
+                    <span class="menu-toggle">▶</span>
+                    <a href="{{ .URL }}">{{ .Name }}</a>
+                    <ul class="sub-menu{{ if $currentPage.HasMenuCurrent "main" . }} active{{ end }}">
+                        {{ range .Children }}
+                            <li class="{{ if $currentPage.IsMenuCurrent "main" . }}active{{ end }}">
+                                <a href="{{ .URL }}">{{ .Name }}</a>
+                            </li>
+                        {{ end }}
+                    </ul>
+                </li>
+            {{ else }}
+                <li class="{{ if $currentPage.IsMenuCurrent "main" . }}active{{ end }}">
+                    <a href="{{ .URL }}">{{ .Name }}</a>
+                </li>
+            {{ end }}
+        {{ end }}
+    </ul>
+</nav>
